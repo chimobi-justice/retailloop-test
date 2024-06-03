@@ -34,14 +34,8 @@ const Table: FunctionComponent = () => {
   const [recordNotFound, setRecordNotFound] = useState<boolean>(false);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const searchTerm = e.target.value;
+    const searchTerm = e.target.value.trimStart();
     setSearch(searchTerm);
-
-    if (searchTerm.trim() === '') {
-      setData(TableData);
-      setRecordNotFound(false)
-      return;
-    }
 
     if (searchTerm) {
       const filteredData = TableData.filter((item: ITableDataItem) => (
